@@ -54,13 +54,10 @@ The UnitsML standard is governed by the OASIS Intellectual Property Rights Polic
 
 [Read the License](LICENSE)
 
-[LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
-
-Unless required by applicable law or agreed to in writing, the 3Docx standard and software distributed under the License
+Unless required by applicable law or agreed to in writing, the UnitsML standard and any derivative works re-distributed under the License
 is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-The OCX Consortium is not liable to any use whatsoever of the distributed standard or software based on the standard.
+The OCX Consortium is not liable to any use whatsoever of the distributed standard or derivative works based on the standard.
 
-See the License for the specific language governing permissions and limitations under the License.
 
 # Credits
 

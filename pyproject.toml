@@ -89,7 +89,7 @@ search = 'UnitsMLSchema_lite-{current_version}'
 ##
 [[tool.tbump.before_commit]]
 name = "Generate data-binding package config."
-cmd = "python -m ocx_generate generate unitsmlSchema_lite.xsd ocx_unitsml {new_version}"
+cmd = "python -m ocx_generator generate unitsmlSchema_lite.xsd ocx_unitsml {new_version}"
 ##
 ##[[tool.tbump.before_commit]]
 ##name = "Cd to .."

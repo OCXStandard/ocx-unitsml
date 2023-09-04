@@ -63,15 +63,15 @@ tag_template = "v{new_version}"
 src = "pyproject.toml"
 
 [[tool.tbump.file]]
-src = "./{name}/__init__.py"
+src = "./ocx_unitsml/__init__.py"
 
 [[tool.tbump.file]]
-src = "unitsmlSchema_lite.xsd"
+src = "./ocx_unitsml/unitsmlSchema_lite.xsd"
 version_template = "{major}{minor}{patch}{extra}"
 search = 'version="{current_version}"'
 
 [[tool.tbump.file]]
-src = "./{name}/unitsmlSchema_lite.xsd"
+src = "./ocx_unitsml/unitsmlSchema_lite.xsd"
 version_template = "{major}{minor}{patch}{extra}"
 search = 'UnitsMLSchema_lite-{current_version}'
 

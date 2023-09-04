@@ -10,20 +10,22 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 name = "ocx_unitsml"
 version = "0.9.18"
-description = ""
-authors = ["ocastrup <ole.christain.astrup@dnv.com>"]
+description = "Python databinding for the Units Markup Language (UnitsML) lite schema"
+authors = ["ocastrup <ole.christian.astrup@dnv.com>"]
 readme = "README.md"
 packages = [{include = "ocx_unitsml"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 xsdata = "^23.6"
+click = "*"
 packaging = "^23.1"
-tbump= '*'
+tbump= "*"
+ocx_generator = "*"
 
 [tool.tbump]
 # Uncomment this if your project is hosted on GitHub:
-github_url = "https://github.com/OCXStandard/OCX_Schema"
+github_url = "https://github.com/OCXStandard/ocx-unitsml"
 
 [tool.tbump.version]
 current = "0.9.18"
@@ -61,7 +63,7 @@ tag_template = "v{new_version}"
 src = "pyproject.toml"
 
 [[tool.tbump.file]]
-src = "./ocx_unitsml/__init__.py"
+src = "./{name}/__init__.py"
 
 [[tool.tbump.file]]
 src = "unitsmlSchema_lite.xsd"
@@ -69,7 +71,7 @@ version_template = "{major}{minor}{patch}{extra}"
 search = 'version="{current_version}"'
 
 [[tool.tbump.file]]
-src = "unitsmlSchema_lite.xsd"
+src = "./{name}/unitsmlSchema_lite.xsd"
 version_template = "{major}{minor}{patch}{extra}"
 search = 'UnitsMLSchema_lite-{current_version}'
 
@@ -85,9 +87,9 @@ search = 'UnitsMLSchema_lite-{current_version}'
 ##name = "Cd to ./ocx"
 ##cmd = "cd ./ocx"
 ##
-##[[tool.tbump.before_commit]]
-##name = "Generate data-bindings."
-##cmd = "xsdata generate OCX_Schema.xsd"
+[[tool.tbump.before_commit]]
+name = "Generate data-binding package config."
+cmd = "python -m ocx_generate generate unitsmlSchema_lite.xsd ocx_unitsml {new_version}"
 ##
 ##[[tool.tbump.before_commit]]
 ##name = "Cd to .."
@@ -103,6 +105,6 @@ search = 'UnitsMLSchema_lite-{current_version}'
 
 # Or run some commands after the git tag and the branch
 # have been pushed:
-#  [[tool.tbump.after_push]]
-#  name = "publish"
-#  cmd = "./publish.sh"
+[[tool.tbump.after_push]]
+name = "build"
+cmd = "poetry build"

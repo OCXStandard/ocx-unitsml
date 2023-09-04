@@ -1,8 +1,8 @@
 # unitsml: Changelog
 
-## 0.9.18
+## Version 0.9.18
 
-release tag: 
+## Changes
 
 Version published by NIST with minor modifications:
 

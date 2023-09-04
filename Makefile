@@ -2,6 +2,8 @@
 # You can set these variables from the command line, and also
 # from the environment for the first two.
 
+SOURCEDIR = ./ocx-unitsml
+CONDA_ENV = unitsml
 
 conda-upd:  ## Update the conda development environment when environment.yml has changed
 	@conda env update -f environment.yml
@@ -11,72 +13,24 @@ conda-clean: ## Purge all conda tarballs, log files and caches
 	conda clean -a -y
 .Phony: conda-clean
 
-
-# PROJECT DEPENDENCIES ########################################################
+conda-activate: ## Activate the conda environment for the project
+	@conda activate $(CONDA_ENV)
 
 # Color output
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-# DOCUMENTATION ##############################################################
-SPHINXBUILD = sphinx-build -E -b html docs dist/docs
-COVDIR = "htmlcov"
-
-doc-serve: ## Open the the html docs built by Sphinx
-	@cmd /c start "dist/docs/index.html"
-
-ds: doc-serve
-.PHONY: ds
-
-doc-help:  ## Sphinx options when running make from the docs folder
-	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
-
-doc: ## Build the html docs using Sphinx. For other Sphinx options, run make in the docs folder
-	@$(SPHINXBUILD)  -M clean "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
-	@$(SPHINXBUILD)  "$(SOURCEDIR)" "$(BUILDDIR)/$(SPHINXOPTS)" -b "$(SPHINXOPTS)"
 
 
+# BUILD ########################################################################
+build:   ## Build the package dist with poetry
+	@poetry update
+	@poetry build
+.PHONY: build
 
-# RUN ##################################################################
-
-
-run: ## Start ocxwiki CLI
-	@python cli.py
-PHONY: run
-# TESTS #######################################################################
-
-FAILURES := .pytest_cache/pytest/v/cache/lastfailed
-
-test:  ## Run unit and integration tests
-	#@pytest --durations=5  --cov-report html --cov src .
-	@pytest
-
-test-upd:  ## Update the regression tests baseline
-	@pytest --force-regen
-
-tu: test-upd
-PHONY: tu
-
-test-cov:  ## Show the test coverage report
-	cmd /c start $(CURDIR)/$(COVDIR)/index.html
-
-tc: test-cov
-.PHONY: tc
-
-PHONY: test-upd, test-cov
-# CHECKS ######################################################################
-check-lint:	## Run formatters, linters, and static code security scanners bandit and jake
-	@printf "\n${BLUE}Running black against source and test files...${NC}\n"
-	@black . -v
-	@printf "${BLUE}\nRunning Flake8 against source and test files...${NC}\n"
-	@flake8 -v
-
-
-# BUILD #######################################################################
-
-build-exe:   ## Build a bundled package (on windows: an exe file) executable using pyinstaller
-	@pyinstaller main.spec
-.PHONY: build-exe
+publish:   ## Build the package dist with poetry
+	@poetry publish --username=3docx
+.PHONY: publish
 
 
 # HELP ########################################################################

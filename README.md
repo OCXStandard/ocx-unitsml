@@ -2,12 +2,19 @@
 # UnitsML XML unit markup schema 
 
 ## Introduction 
-This schema was [originally developed and published by NIST](https://unitsml.nist.gov/)
-The schema is used by the [OCX schema](https://github.com/OCXStandard/OCX_Schema) managed by the [OCX Consortium](https://3docx.org).
+This schema was [originally developed and published by NIST](https://unitsml.nist.gov/).
+The schema is used by the [OCX schema](https://github.com/OCXStandard/OCX_Schema) which is managed by the [OCX Consortium](https://3docx.org).
+The UnitsML schema is publihsed by the OCX Consortium under the original [LICENSE](LICENSE).
 
 ## Changelog
   * [CHANGELOG.md](CHANGELOG.md)
 
+## Project structure
+<pre><code>
+Root
+└──ocx_unitsml         
+   └───ocx_unitsml_0918
+</code></pre>
 
 ## How to contribute
 The schema file is maintained using an XML editor like Altova XMLSpy.
@@ -17,7 +24,6 @@ Follow [the recipe on the Wiki](https://github.com/OCXStandard/OCX_Schema/wiki) 
 3. Then create a branch from the issue, check out the branch and implement the proposed changes.
 4. When the implementation is completed, create a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 4. The pull request will have to be approved by the [OCXStandard maintainer](https://github.com/orgs/OCXStandard/teams/ocx-schema-team?query=role%3Amaintainer) before it can be included in the working draft.
-
 
 ## Schema versioning
 The UnitsML schema is following the Python [PEP 440 versioning recommendations](https://peps.python.org/pep-0440/).

@@ -22,15 +22,10 @@ NC='\033[0m' # No Color
 
 
 
-# BUILD ########################################################################
-build:   ## Build the package dist with poetry
-	@poetry update
-	@poetry build
-.PHONY: build
-
-publish:   ## Build the package dist with poetry
-	@poetry publish --username=3docx
-.PHONY: publish
+# Poetry ########################################################################
+poetry-fix:  ## Force pip poetry re-installation
+	@pip install poetry --upgrade
+.PHONY: poetry-fix
 
 
 # HELP ########################################################################

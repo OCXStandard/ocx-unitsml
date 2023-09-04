@@ -67,12 +67,12 @@ src = "./ocx_unitsml/__init__.py"
 
 [[tool.tbump.file]]
 src = "./ocx_unitsml/unitsmlSchema_lite.xsd"
-version_template = "{major}{minor}{patch}{extra}"
+#version_template = "{major}.{minor}.{patch}{extra}"
 search = 'version="{current_version}"'
 
 [[tool.tbump.file]]
 src = "./ocx_unitsml/unitsmlSchema_lite.xsd"
-version_template = "{major}{minor}{patch}{extra}"
+version_template = "{major}.{minor}.{patch}{extra}"
 search = 'UnitsMLSchema_lite-{current_version}'
 
 # You can specify a list of commands to

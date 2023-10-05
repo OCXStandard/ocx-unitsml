@@ -12,7 +12,7 @@ name = "ocx_unitsml"
 version = "0.9.18"
 description = "Python databinding for the Units Markup Language (UnitsML) lite schema"
 authors = ["ocastrup <ole.christian.astrup@dnv.com>"]
-readme = "README.md"
+readme = "DATABINDING.md"
 packages = [{include = "ocx_unitsml"}]
 
 [tool.poetry.dependencies]
